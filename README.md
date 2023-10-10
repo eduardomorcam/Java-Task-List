@@ -2,7 +2,7 @@ Java-Task-List
 ================
 My first proyect made in Java: a task list that allows you to keep track of your pending tasks.
 
-<img src="" alt="Menu" width="250px">.
+<img src="Menu.png" alt="Menu" width="250px">.
 
 ## Project Structure:
 
