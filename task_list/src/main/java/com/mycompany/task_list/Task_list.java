@@ -37,8 +37,8 @@ public class Task_list {
                 case 1:
                     System.out.println("Add the task: ");
                     sc.nextLine();
-                    task = sc.nextLine();                                                                  
-
+                    task = sc.nextLine();      
+                    
                     for(empty_task = 0; empty_task < 10; empty_task++){                              
                         if(tasks[empty_task] == ""){                                                               
                             empty = true;                                                                   
@@ -48,26 +48,17 @@ public class Task_list {
                     
                     if(empty){                                                                
                         save_counter_list = counter_list;                                                                       
-                        counter_list = empty_task;                                                                          
-                    } 
-                    
-                     tasks[counter_list] = task;                                                 
-                    counter_list++;                                                                
-                    
-                    if(empty){                                                                                   
-                        counter_list = save_counter_list;                                                                        
+                        counter_list = empty_task;          
+                        tasks[counter_list] = task;  
+                        counter_list = save_counter_list;
+                    } else {
+                        System.out.println("You already have 10 tasks, which task do you want to overwrite?");
+                        counter_list = sc.nextInt();
+                        tasks[counter_list-1] = task;
+                        
                     }
-                    
-                    if(empty == false){                                                                       
-                        counter_list = 0;                                                    
-                    }
-                    
-                    if(counter_list > 9){                                             
-                        counter_list = 0;                                                 
-                    }
-                    
+
                     System.out.println("Task added.");
-                    
                     break;
                     
                 case 2:
