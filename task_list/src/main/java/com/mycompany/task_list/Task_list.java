@@ -77,8 +77,11 @@ public class Task_list {
                     }   break;
                     
                 case 3:
-                    System.out.println("Type the task number you want to delete: ");
+                    System.out.println("Type the task number you want to delete (if you do not want to delete any press 0): ");
                     int delete = sc.nextInt();
+                    if(delete == 0){
+                        break;
+                    }
                     tasks[delete-1] = "";                                                                                   
                     System.out.println("Task deleted.");
                     break;
