@@ -24,7 +24,7 @@ The application features an interactive menu that continuously repeats as long a
 
 #### Task Limitation
 
-To keep task management simple and effective, the application limits the maximum number of tasks to 10. If a user attempts to add a task beyond this limit, the user will have to choose which task he/she wants to overwrite..
+To keep task management simple and effective, the application limits the maximum number of tasks to 10 (although if you want the limit to be different you can change it in the code and it will still work.). If a user attempts to add a task beyond this limit, the user will have to choose which task he/she wants to overwrite..
 
 #### Add Tasks
 
