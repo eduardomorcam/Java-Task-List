@@ -9,9 +9,12 @@ public class Task_list {
         
         int num = 1;
         String task;                                                                          
-        String[] tasks = {"","","","","","","","","",""};                      
+        String[] tasks = new String[10];                      
         int counter_list;                                                                  
-        
+
+        for(int i = 0; i < tasks.length; i++){
+            tasks[i] = "";
+        }
         
         System.out.println("Welcome to your to-do list (you can have no more than 10 to-do's).");
         
