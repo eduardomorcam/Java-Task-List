@@ -1,84 +1,102 @@
 package com.mycompany.task_list;
-
+import java.util.Random;
 import java.util.Scanner;
-
 public class Task_list {
-
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Random random = new Random();        
         
-        int num = 1;
-        String task;                                                                          
-        String[] tasks = new String[10];                      
-        int counter_list;                                                                  
-
-        for(int i = 0; i < tasks.length; i++){
-            tasks[i] = "";
+        String[][] tareas = new String[11][7];
+        tareas[0][0] = "Lunes";
+        tareas[0][1] = "Martes";
+        tareas[0][2] = "Miércoles";
+        tareas[0][3] = "Jueves";
+        tareas[0][4] = "Viernes";
+        tareas[0][5] = "Sábado";
+        tareas[0][6] = "Domingo";
+        
+        for(int i = 0; i < 7; i++){                                                             
+            for(int e = 1; e < 11; e++){
+                tareas[e][i] = "";
+            }
         }
         
-        System.out.println("Welcome to your to-do list (you can have no more than 10 to-do's).");
+        int dia;
+        int num = 1;
+        String tarea;
+        int contador; 
         
         while(num != 0){
             
-          boolean empty = false;                                                                                                                                        
+          boolean vacia = false;                                                                                                                                        
             
-          System.out.println("Press 1 to add a pending task.");
-          System.out.println("Press 2 to see pending tasks.");
-          System.out.println("Press 3 to delete a task.");
-          System.out.println("Press 0 to exit the program.");
+          System.out.println("1 pa añadir tarea");
+          System.out.println("2 pa ver tareas");
+          System.out.println("3 pa borrar tarea");
+          System.out.println("0 pa salir");
           num = sc.nextInt();
           
           while(num < 0 || num > 3){
-              System.out.println("Error, re-enter a number");
+              System.out.println("Error, vuelve a introducir un numero");
               num = sc.nextInt();
           }
           
-            switch (num) {
-                
-                case 1:
-                    System.out.println("Add the task: ");
-                    sc.nextLine();
-                    task = sc.nextLine();      
-                    
-                    for(counter_list = 0; counter_list < tasks.length; counter_list++){                              
-                        if(tasks[counter_list] == ""){                                                               
-                            empty = true;                                                                   
+          switch(num){
+              case 1:
+                  System.out.println("Añade la tarea: "); 
+                  sc.nextLine();
+                  tarea = sc.nextLine();
+                  
+                  System.out.println("Para que dia de la semana (1-7)?");
+                  dia = sc.nextInt();
+                  
+                  while(dia < 1 || dia > 7){
+                    System.out.println("Error, vuelve a introducir el dia");
+                    dia = sc.nextInt();
+                  }
+                  
+                  for(contador = 0; contador < 11; contador++){                              
+                        if(tareas[contador][dia-1] == ""){                                                               
+                            vacia = true;                                                                   
                             break;
                         }
                     }
                     
-                    if(empty){                                                                
-                        tasks[counter_list] = task;
+                    if(vacia){                                                                
+                        tareas[contador][dia-1] = tarea;
                     } else {
-                        System.out.println("You already have 10 tasks, which task do you want to overwrite?");
-                        counter_list = sc.nextInt();
-                        tasks[counter_list-1] = task;
+                        System.out.println("Ya tienes 10 tareas ese dia, que numero de tarea quieres sobreescribir?");
+                        contador = sc.nextInt();
+                        tareas[contador][dia-1] = tarea;
                     }
 
-                    System.out.println("Task added.");
-                    break;
+                    System.out.println("Tarea añadida.");
                     
-                case 2:
-                    System.out.println("These are your pending tasks: ");
-                    for(int i = 0; i < tasks.length; i++){                                                            
-                        System.out.println(i + 1 + "- " + tasks[i]);                                           
-                    }   
-                    break;
-                    
-                case 3:
-                    System.out.println("Type the task number you want to delete (if you do not want to delete any press 0): ");
-                    int delete = sc.nextInt();
-                    if(delete == 0){
-                        break;
-                    }
-                    tasks[delete-1] = "";                                                                                   
-                    System.out.println("Task deleted.");
-                    break;
+              case 2:
+                  System.out.println("Estas son tus tareas pendientes: ");
+                  for(int i = 0; i < 7; i++){                        
+                      System.out.println(""); 
+                      System.out.println(tareas[0][i]);
+                      for(int e = 1; e < 11; e++){
+                          System.out.println(e + "-" + tareas[e][i]); 
+                      }
+                  }
+                  break;
+              case 3:
+                  System.out.println("Que dia?");
+                  dia = sc.nextInt();
+                  System.out.println("Que tarea?"); 
+                  contador = sc.nextInt();
+                  tareas[contador][dia-1] = "";                                                                                   
+                  System.out.println("Tarea borrada");
+                  break;
                     
                 default:
-                    System.out.println("See you soon.");
+                  System.out.println("See you soon.");
                     break;
-            }
+          }
         }
+
     }
 }
